@@ -6,23 +6,23 @@
  */
 
 // Given Parameters
-const vel = 10000; // velocity (km/h)
-const acc = 3; // acceleration (m/s^2)
+const velocity = 10000; // velocity (km/h)
+const accelaration = 3; // acceleration (m/s^2)
 const time = 3600; // seconds (1 hour)
-const d = 0; // distance (km)
+const distance = 0; // distance (km)
 const fuel = 5000; // remaining fuel (kg)
-const fbr = 0.5; // fuel burn rate (kg/s)
+const fuelburnrate = 0.5; // fuel burn rate (kg/s)
 
 // acceleration conversion 
-const accInKmPerHourSquared = acc * 12.96;
+const accInKmPerHourSquared = accelaration * 12.96;
 
-const d2 = d + (vel * (time / 3600)) //calculates new distance
+const distance2 = distance + (velocity * (time / 3600)) //calculates new distance
 
-const rf = Math.max(fuel- (fbr * time), 0)//calculates remaining fuel
+const remainingfuel = Math.max(fuel- (fuelburnrate * time), 0)//calculates remaining fuel
 
 //calculates new velocity based on acceleration
 const calcNewVel = ({ velocity, acceleration, time }) => {
-  
+
   //ensures valid inputs 
   if (typeof velocity !== 'number' || typeof acceleration !== 'number' || typeof time !== 'number') {
     throw new Error('Invalid input values.');
@@ -33,11 +33,11 @@ const calcNewVel = ({ velocity, acceleration, time }) => {
 }; 
 
 // Pick up an error with how the function below is called and make it robust to such errors
-const vel2 = calcNewVel({ velocity: vel, acceleration: accInKmPerHourSquared, time });
+const velocity2 = calcNewVel({ velocity: velocity, acceleration: accInKmPerHourSquared, time });
 
-console.log(`Corrected New Velocity: ${vel2.toFixed(2)} km/h`);
-console.log(`Corrected New Distance: ${d2.toFixed(2)} km`);
-console.log(`Corrected Remaining Fuel: ${rf.toFixed(2)} kg`);
+console.log(`Corrected New Velocity: ${velocity2.toFixed(2)} km/h`);
+console.log(`Corrected New Distance: ${distance2.toFixed(2)} km`);
+console.log(`Corrected Remaining Fuel: ${remainingfuel.toFixed(2)} kg`);
 
 
 
